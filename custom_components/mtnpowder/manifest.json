@@ -14,5 +14,6 @@
   ],
   "iot_class": "cloud_polling",
   "integration_type": "hub",
-  "single_config_entry": true
+  "single_config_entry": true,
+  "issue_tracker": "https://github.com/stevemurphymsu/homeassistant-mtnpowder/issues"
 }
