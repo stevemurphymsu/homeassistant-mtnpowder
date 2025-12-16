@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "homeassistant-mtnpowder"
+version = "0.1.0"
+description = "Home Assistant integration for Alterra/MtnPowder ski resorts"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Home Automation",
+]
+dependencies = [
+    "aiohttp>=3.8",
+    "feedparser>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/stevemurphymsu/homeassistant-mtnpowder"
+Repository = "https://github.com/stevemurphymsu/homeassistant-mtnpowder"
+Issues = "https://github.com/stevemurphymsu/homeassistant-mtnpowder/issues"
+Changelog = "https://github.com/stevemurphymsu/homeassistant-mtnpowder/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["custom_components.mtnpowder"]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+follow_imports = "silent"
+strict_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true

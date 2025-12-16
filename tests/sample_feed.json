@@ -1,0 +1,71 @@
+{
+    "LastUpdate": "2025-11-24T15:42:20-0700",
+    "Resorts": [
+        {
+            "Name": "Stratton",
+            "LastUpdate": "2025-11-24T17:42:17-0500",
+            "OperatingStatus": "Closed",
+            "SnowReport": {
+                "LastUpdate": "2025-11-24T15:22:44-0500",
+                "BaseConditions": "--",
+                "Report": "Test report",
+                "OpenTerrainAcres": "0",
+                "TotalTerrainAcres": "670",
+                "SeasonTotalIn": "14",
+                "SeasonTotalCm": "36",
+                "GroomingActive": "false",
+                "SnowMakingActive": "false"
+            },
+            "MountainAreas": [
+                {
+                    "Name": "Test Area",
+                    "OpenTrailsCount": 5,
+                    "TotalTrailsCount": 10,
+                    "Trails": [
+                        {
+                            "Name": "Test Trail",
+                            "StatusEnglish": "open",
+                            "Difficulty": "Easy"
+                        }
+                    ],
+                    "Lifts": [
+                        {
+                            "Name": "Test Lift",
+                            "StatusEnglish": "closed"
+                        }
+                    ],
+                    "Activities": [
+                        {
+                            "Name": "Test Activity",
+                            "StatusEnglish": "open"
+                        }
+                    ]
+                }
+            ],
+            "CurrentConditions": {
+                "Base": {
+                    "TemperatureC": "5",
+                    "Humidity": "60",
+                    "WindStrengthKph": "10",
+                    "WindDirection": "N",
+                    "PressureMB": "1013",
+                    "Skies": "Clear"
+                }
+            },
+            "Forecast": {
+                "OneDay": {
+                    "date": "2025-11-25",
+                    "conditions": "Sunny",
+                    "temp_high_f": "20",
+                    "temp_low_f": "10",
+                    "forecasted_snow_day_in": "0",
+                    "forecasted_snow_night_in": "0"
+                }
+            },
+            "stats": {
+                "updates_today": 1,
+                "no_updates_today": 0
+            }
+        }
+    ]
+}

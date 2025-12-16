@@ -1,0 +1,18 @@
+{
+  "domain": "mtnpowder",
+  "name": "Alterra MtnPowder Ski Resort Status",
+  "version": "0.1.0",
+  "documentation": "https://github.com/stevemurphymsu/homeassistant-mtnpowder",
+  "requirements": [
+    "aiohttp>=3.8",
+    "feedparser>=6.0"
+  ],
+  "dependencies": [],
+  "config_flow": true,
+  "codeowners": [
+    "@stevemurphymsu"
+  ],
+  "iot_class": "cloud_polling",
+  "integration_type": "hub",
+  "single_config_entry": true
+}
