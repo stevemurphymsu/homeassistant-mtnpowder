@@ -76,7 +76,11 @@ async def async_setup_entry(
         weather_entities = []
         for mountain in mountains:
             # Areas: Base, MidMountain, Summit
-            resort = coordinator.data.get(mountain)
+            resort = [
+                item
+                for item in self.coordinator.data["Resorts"]
+                if item["Name"] == mountain
+            ][0]
             areas = resort.get("CurrentConditions", [])
             for area in areas:
                 weather_entities.append(MtnPowderWeather(coordinator, mountain, area))
@@ -100,15 +104,16 @@ class MtnPowderWeather(CoordinatorEntity, WeatherEntity):
     @property
     def available(self):
         """Return if the entity is available."""
-        return (
-            self.coordinator.data is not None
-            and self._mountain in self.coordinator.data
-        )
+        return self.coordinator.data is not None
 
     @property
     def native_temperature(self):
         """Return the temperature."""
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if resort:
             current_conditions = resort.get("CurrentConditions", {})
             area_data = current_conditions.get(self._area)
@@ -129,7 +134,11 @@ class MtnPowderWeather(CoordinatorEntity, WeatherEntity):
     @property
     def humidity(self):
         """Return the humidity."""
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if resort:
             current_conditions = resort.get("CurrentConditions", {})
             area_data = current_conditions.get(self._area)
@@ -145,7 +154,11 @@ class MtnPowderWeather(CoordinatorEntity, WeatherEntity):
     @property
     def native_wind_speed(self):
         """Return the wind speed."""
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if resort:
             current_conditions = resort.get("CurrentConditions", {})
             area_data = current_conditions.get(self._area)
@@ -166,7 +179,11 @@ class MtnPowderWeather(CoordinatorEntity, WeatherEntity):
     @property
     def wind_bearing(self):
         """Return the wind bearing."""
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if resort:
             current_conditions = resort.get("CurrentConditions", {})
             area_data = current_conditions.get(self._area)
@@ -179,7 +196,11 @@ class MtnPowderWeather(CoordinatorEntity, WeatherEntity):
     @property
     def native_pressure(self):
         """Return the pressure."""
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if resort:
             current_conditions = resort.get("CurrentConditions", {})
             area_data = current_conditions.get(self._area)
@@ -200,7 +221,11 @@ class MtnPowderWeather(CoordinatorEntity, WeatherEntity):
     @property
     def condition(self):
         """Return the weather condition."""
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if resort:
             current_conditions = resort.get("CurrentConditions", {})
             area_data = current_conditions.get(self._area)
@@ -213,7 +238,11 @@ class MtnPowderWeather(CoordinatorEntity, WeatherEntity):
     @property
     def forecast(self):
         """Return the forecast."""
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if not resort:
             return None
         forecast_data = resort.get("Forecast", {})
@@ -296,7 +325,11 @@ class MtnPowderWeather(CoordinatorEntity, WeatherEntity):
 
     def _handle_coordinator_update(self) -> None:
         """Handle coordinator update."""
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if resort:
             current_conditions = resort.get("CurrentConditions", {})
             area_data = current_conditions.get(self._area)

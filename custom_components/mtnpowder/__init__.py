@@ -80,9 +80,12 @@ class MtnPowderCoordinator(DataUpdateCoordinator):
                 FEED_URL, timeout=aiohttp.ClientTimeout(total=10)
             ) as resp:
                 text = await resp.text()
+                # _LOGGER.debug("Response text: %s", text)
                 # Update cached headers
                 self._last_etag = resp.headers.get("ETag")
+                _LOGGER.debug("ETAG: %s", self._last_etag)
                 self._last_modified = resp.headers.get("Last-Modified")
+                _LOGGER.debug("Last-Modified: %s", self._last_modified)
         except asyncio.CancelledError:
             raise
         except aiohttp.ClientError as err:
@@ -96,22 +99,23 @@ class MtnPowderCoordinator(DataUpdateCoordinator):
             return self._last_data
 
         # Process data to create dict of mountain -> resort data
-        result = {}
-        mountains = self.config_entry.data.get("mountains", [])
+        # mountains = self.config_entry.data.get("mountains", [])
+
         stats = {
             "updates_today": self._updates_today,
             "no_updates_today": self._no_updates_today,
         }
-        for resort in data.get("Resorts", []):
-            name = resort.get("Name")
-            if name and name in mountains:
-                resort_copy = resort.copy()
-                resort_copy["stats"] = stats
-                result[name] = resort_copy
+
+        # for resort in data.get("Resorts", []):
+        #   name = resort.get("Name")
+        #   if name and name in mountains:
+        #        resort_copy = resort.copy()
+        #        resort_copy["stats"] = stats
+        #        result[name] = resort_copy
 
         # Cache the result
-        self._last_data = result
-        return result
+        self._last_data = data
+        return data
 
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:

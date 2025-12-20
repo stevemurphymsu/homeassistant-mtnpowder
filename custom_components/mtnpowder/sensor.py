@@ -94,7 +94,9 @@ async def async_setup_entry(
                 )
 
             # MountainAreas sensors
-            resort_data = coordinator.data.get(mountain, {})
+            resort_data = [
+                item for item in coordinator.data["Resorts"] if item["Name"] == mountain
+            ][0]
             mountain_areas = resort_data.get("MountainAreas", [])
             for area in mountain_areas:
                 sensors.append(
@@ -164,7 +166,7 @@ class MtnPowderSensor(CoordinatorEntity, SensorEntity, RestoreEntity):
         elif sensor_type[0] == "snow_report":
             key = sensor_type[1]
             # Add spaces between words
-            display_key = re.sub(r"([a-z])([A-Z])", r"\1 \2", display_key)
+            display_key = re.sub(r"([a-z])([A-Z])", r"\1 \2", key)
             self._attr_name = f"{mountain} {display_key}"
             self._attr_unique_id = f"{mountain}_snow_report_{key}"
             # Add unit_of_measurement for known units
@@ -214,10 +216,7 @@ class MtnPowderSensor(CoordinatorEntity, SensorEntity, RestoreEntity):
     @property
     def available(self):
         """Return if the sensor is available."""
-        return (
-            self.coordinator.data is not None
-            and self._mountain in self.coordinator.data
-        )
+        return self.coordinator.data is not None
 
     async def async_added_to_hass(self):
         """Handle entity being added to hass."""
@@ -227,7 +226,11 @@ class MtnPowderSensor(CoordinatorEntity, SensorEntity, RestoreEntity):
         self._handle_coordinator_update()
 
     def _handle_coordinator_update(self) -> None:
-        resort = self.coordinator.data.get(self._mountain)
+        resort = [
+            item
+            for item in self.coordinator.data["Resorts"]
+            if item["Name"] == self._mountain
+        ][0]
         if not resort:
             self._state = None
         else:
@@ -235,8 +238,8 @@ class MtnPowderSensor(CoordinatorEntity, SensorEntity, RestoreEntity):
                 self._state = resort.get("OperatingStatus")
             elif self._sensor_type[0] == "snow_report":
                 key = self._sensor_type[1]
-                snow_report = resort.get("SnowReport", {})
-                value = snow_report.get(key)
+                snow_report = resort["SnowReport"]
+                value = snow_report[key]
                 if isinstance(value, str) and len(value) > 255:
                     self._state = value[:252] + "..."
                 else:
