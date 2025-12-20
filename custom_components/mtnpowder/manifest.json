@@ -1,6 +1,6 @@
 {
-  "domain": "alterra_mountian_company",
-  "name": "Alterra Mountian Company MtnPowder.com Ski Resort Status and Weather",
+  "domain": "mtnpowder",
+  "name": "Alterra Mountain Company MtnPowder.com Ski Resort Status and Weather",
   "version": "0.1.0",
   "documentation": "https://github.com/stevemurphymsu/homeassistant-mtnpowder",
   "requirements": [
@@ -8,7 +8,7 @@
     "feedparser>=6.0"
   ],
   "dependencies": [],
-  "config_flow": true,
+  "config_flow": true,  
   "codeowners": [
     "@stevemurphymsu"
   ],
