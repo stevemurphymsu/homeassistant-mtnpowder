@@ -11,8 +11,8 @@
     "@stevemurphymsu"
   ],
   "documentation": "https://github.com/stevemurphymsu/homeassistant-mtnpowder",
-  "iot_class": "cloud_polling",
   "integration_type": "hub",
+  "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/stevemurphymsu/homeassistant-mtnpowder/issues",
   "requirements": [
     "feedparser>=6.0"
