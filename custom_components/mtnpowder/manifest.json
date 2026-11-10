@@ -6,10 +6,10 @@
     "weather_alerts.forecasts",
     "vehicles_transport.public_transport"
   ],
-  "config_flow": true,
   "codeowners": [
     "@stevemurphymsu"
   ],
+  "config_flow": true,
   "documentation": "https://github.com/stevemurphymsu/homeassistant-mtnpowder",
   "integration_type": "hub",
   "iot_class": "cloud_polling",
