@@ -1,13 +1,5 @@
 # Alterra/MtnPowder Home Assistant Integration
 
-[![GitHub Release][releases-shield]][releases]
-[![GitHub Activity][commits-shield]][commits]
-[![License][license-shield]](LICENSE)
-[![hacs][hacsbadge]][hacs]
-[![CI][ci-shield]][ci]
-
-[![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
-
 This Home Assistant custom integration provides comprehensive monitoring for Alterra ski resorts by reading data from the MtnPowder feed (https://mtnpowder.com/feed/). It creates sensors and weather entities to track resort conditions, snow reports, trail status, and weather forecasts.
 
 ## Features
