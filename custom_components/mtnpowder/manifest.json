@@ -1,18 +1,21 @@
 {
   "domain": "mtnpowder",
   "name": "Alterra Mountain Company MtnPowder.com Ski Resort Status and Weather",
-  "version": "0.1.0",
-  "documentation": "https://github.com/stevemurphymsu/homeassistant-mtnpowder",
-  "requirements": [
-    "aiohttp>=3.8",
-    "feedparser>=6.0"
+  "categories": [
+    "local_services",
+    "weather_alerts.forecasts",
+    "vehicles_transport.public_transport"
   ],
-  "dependencies": [],
   "config_flow": true,
   "codeowners": [
     "@stevemurphymsu"
   ],
+  "documentation": "https://github.com/stevemurphymsu/homeassistant-mtnpowder",
   "iot_class": "cloud_polling",
   "integration_type": "hub",
-  "issue_tracker": "https://github.com/stevemurphymsu/homeassistant-mtnpowder/issues"
+  "issue_tracker": "https://github.com/stevemurphymsu/homeassistant-mtnpowder/issues",
+  "requirements": [
+    "feedparser>=6.0"
+  ],
+  "version": "1.0.0"
 }

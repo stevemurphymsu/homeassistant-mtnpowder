@@ -1,0 +1,5 @@
+{
+  "domain": "mtnpowder",
+  "name": "Alterra MtnPowder",
+  "integrations": ["mtnpowder"]
+}
